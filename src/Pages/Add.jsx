@@ -1,6 +1,7 @@
 import React, {useDebugValue, useState} from "react";
 import { supabase } from "../Client";
 
+
 const Add = () => {
     const [place, setPlace] = useState({Name:"", Location: "", Description:""})
 

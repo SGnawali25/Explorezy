@@ -1,14 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../Components/Card';
+import { supabase } from "../Client";
 
 const Read = (props) => {
 
     const [places, setPlaces] = useState([]);
-    const originalPlaces = props.data;
+    const [originalPlaces, setOriginalPlaces] = useState([]);
 
-    useEffect(() =>{
-        setPlaces(props.data);
-    },[props])
+    useEffect(() => {
+        const fetchPlaces = async() => {
+        const {data} = await supabase
+        .from('FinalProject')
+        .select()
+        .order("created_at",{ascending: true})
+
+        setPlaces(data)
+        setOriginalPlaces(data)
+        }
+
+        fetchPlaces()
+    }, []);
+
+    const updatePlaces = async() => {
+        const {data} = await supabase
+        .from('FinalProject')
+        .select()
+        .order("created_at",{ascending: true})
+
+        setPlaces(data)
+    }
 
     const searchLocation = (searchValue) => {
         if (searchValue !== ""){
@@ -25,11 +45,13 @@ const Read = (props) => {
     }
     
     const sortByLikes = () => {
+        // updatePlaces()
         const sortedPlaces = places.sort((a,b) => b.Like - a.Like);
         setPlaces([...sortedPlaces]);
     }
 
     const sortByAlphabetically = () =>{
+        // updatePlaces()
         const sortedPlaces = places.sort((a,b) => a.Name.localeCompare(b.Name));
         setPlaces([...sortedPlaces]);
     }
