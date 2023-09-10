@@ -5,7 +5,7 @@ import { supabase } from "../Client";
 
 const Edit = ({data}) => {
 
-    console.log(data)
+
     const {id} = useParams();
     const [place, setPlace] = useState({id:null, Name:"", Location:"", Description:""});
 

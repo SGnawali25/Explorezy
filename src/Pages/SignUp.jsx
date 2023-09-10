@@ -28,7 +28,7 @@ const SignUp = () =>{
             })
             .select();
 
-            window.location = "/Login";
+            window.location = "/lgn";
     }
 
     return(

@@ -33,13 +33,13 @@ const Add = () => {
         <div className="Add">
             <h1>Promote Tourism in your Area.</h1>
             <form>
-                <label for="Name">Name of the Place</label>
+                <label htmlFor="Name">Name of the Place</label>
                 <br/>
                 <input type= "text" className="input-box" id="Name" name="Name" value={place.Name} onChange={handleChange}/>
                 <br/>
                 <br/>
 
-                <label for="Location">Location of the Place</label>
+                <label htmlFor="Location">Location of the Place</label>
                 <br/>
                 <input type="text" className="input-box" id="Location" name="Location" value={place.Location} onChange={handleChange}/>
                 <br/>
@@ -51,7 +51,7 @@ const Add = () => {
                 <br/>
                 <br/>
 
-                <label for="description">Description</label>
+                <label htmlFor="description">Description</label>
                 <br />
                 <textarea type = "text" width = "500" height = "500" id="Description" name = "Description" value={place.Description} onChange={handleChange}></textarea>
                 <br />
