@@ -52,7 +52,7 @@ const App = () =>{
       element:<SignUp/>
     },
     {
-      path:"/lgn",
+      path:"/login",
       element:<Login data = {credentials}/>
     }
   ])
@@ -72,13 +72,16 @@ const App = () =>{
   }, []);
 return(
   <div className='wholePage'>
-
-    <Link to="/lgn"><button className="LoginButton">Login</button></Link>
-    <Link to="/signup"><button className="SignUPButton">SignUp</button></Link>
-    <Link to="/"><button className="HomeButton">Home🏡</button></Link>
-    <Link to="/see"><button className="SeeButton">See Locations👀</button></Link>
-    <Link to="/add"><button className="CreateButton">Add Locations➕</button></Link>
-    {element}
+    <Header/>
+    <Routes>
+        <Route path='/' Component={Home} exact />
+        <Route path='/add' Component={Add} exact/>
+        <Route path = '/see' Component={Read} exact/>
+        <Route path='/see/edit/:id' Component={Edit} exact/>
+        <Route path='/lgn' Component={Login} exact/>
+        <Route path='/signup' Component={SignUp} exact/>
+    </Routes>
+    
   </div>
 
 )

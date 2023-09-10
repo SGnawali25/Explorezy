@@ -19,7 +19,7 @@ const Read = (props) => {
         }
 
         fetchPlaces()
-    }, []);
+    }, [places]);
 
     const updatePlaces = async() => {
         const {data} = await supabase
