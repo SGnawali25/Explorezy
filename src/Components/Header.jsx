@@ -10,77 +10,7 @@ import SignUp from "../Pages/SignUp";
 import Login from "../Pages/Login";
 
 const Header = () => {
-  const [places, setPlaces] = useState ([]);
-  const [credentials, setCredentials] = useState([])
-
-  useEffect(() => {
-    const fetchPlaces = async() => {
-      const {data} = await supabase
-      .from('FinalProject')
-      .select()
-      .order("created_at",{ascending: true})
-
-      setPlaces(data)
-    }
-
-    fetchPlaces()
-  }, []);
-
-  useEffect(() => {
-    const fetchCredentials = async() => {
-      const {data} = await supabase
-      .from('LoginCredentials')
-      .select()
-      .order("created_at",{ascending: true})
-
-      setCredentials(data)
-    }
-
-    fetchCredentials()
-  }, []);
-
-  let element = useRoutes([
-    {
-      path :"/",
-      element:<Home/>
-    },
-    {
-      path : "/add",
-      element : <Add/>
-    },
-    {
-      path : "/see",
-      element : <Read data = {places}/>
-    },
-    {
-      path:"/see/edit/:id",
-      element:<Edit data = {places}/>
-    },
-    {
-      path:"/signup",
-      element:<SignUp/>
-    },
-    {
-      path:"/login",
-      element:<Login data = {credentials}/>
-    }
-  ])
-
-
-  useEffect(() => {
-    const fetchCredentials = async() => {
-      const {data} = await supabase
-      .from('LoginCredentials')
-      .select()
-      .order("created_at",{ascending: true})
-
-      setCredentials(data)
-    }
-
-    fetchCredentials()
-  }, []);
-
-  
+   
 
     return(
         <div className="Header"> 

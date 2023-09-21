@@ -13,25 +13,23 @@ const Card = (props) => {
         setName(props.name);
         setLocation(props.location);
         setDescription(props.description);
-    },[props])
-    
-    useEffect(() =>{
         setLike(props.Like)
-    },[props])
-
-    useEffect(() =>{
         setDislike(props.Dislike)
     },[props])
     
+    
+    
 
     const updateLike = () => {
-        setLike(like + 1);
         LikeUpdate();
+        setLike(like + 1);
+        
     }
 
     const updateDislike = () => {
-        setDislike(dislike + 1);
         DislikeUpdate();
+        setDislike(dislike + 1);
+        
     }
 
     const LikeUpdate = async() => {

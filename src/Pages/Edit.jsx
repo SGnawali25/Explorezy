@@ -3,16 +3,35 @@ import { useParams } from "react-router-dom";
 import { supabase } from "../Client";
 
 
-const Edit = ({data}) => {
-
-
+const Edit = () => {
     const {id} = useParams();
     const [place, setPlace] = useState({id:null, Name:"", Location:"", Description:""});
+    // const [places, setPlaces] = useState([]);
 
-    useEffect(()=>{
-        const result = data.filter(item => String(item.id) === id)[0];
-        setPlace({Name:result.Name, Location: result.Location, Description: result.Description});
-    }, [data, id])
+    
+    useEffect(() => {
+        const fetchPlaces = async() => {
+        const {data, error} = await supabase
+        .from('FinalProject')
+        .select()
+        .order("created_at",{ascending: true})
+
+        if (error) {
+            console.error('Error fetching data:', error);
+          } else {
+            // Update the state with the retrieved data
+            const result = data.filter(item => String(item.id) === id)[0];
+            setPlace({Name:result.Name, Location: result.Location, Description: result.Description});
+          } 
+        
+    }
+
+        fetchPlaces()
+    }, []);
+
+
+
+
 
 
     const handleChange = (event) => {

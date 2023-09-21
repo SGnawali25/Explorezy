@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Card from '../Components/Card';
 import { supabase } from "../Client";
 
-const Read = (props) => {
+const Read = () => {
 
     const [places, setPlaces] = useState([]);
+    const [searchInput, setSearchInput] = useState("");
     const [originalPlaces, setOriginalPlaces] = useState([]);
+    const [filteredResults,setFilteredResults] = useState([]);
 
     useEffect(() => {
         const fetchPlaces = async() => {
@@ -19,20 +21,14 @@ const Read = (props) => {
         }
 
         fetchPlaces()
-    }, [places]);
+    }, []);
 
-    const updatePlaces = async() => {
-        const {data} = await supabase
-        .from('FinalProject')
-        .select()
-        .order("created_at",{ascending: true})
 
-        setPlaces(data)
-    }
+   
 
     const searchLocation = (searchValue) => {
         if (searchValue !== ""){
-            const filteredLocation = originalPlaces.filter(place => place.City === searchValue);
+            const filteredLocation = originalPlaces.filter(place => place.City.toLowerCase().includes(searchValue.toLowerCase()));
             if (filteredLocation.length > 0){
                 setPlaces(filteredLocation)
             } else{
@@ -42,8 +38,11 @@ const Read = (props) => {
             setPlaces(originalPlaces)
         }
 
+        
+
     }
     
+
     const sortByLikes = () => {
         // updatePlaces()
         const sortedPlaces = places.sort((a,b) => b.Like - a.Like);
@@ -88,7 +87,7 @@ const Read = (props) => {
             {
                 places && places.length > 0 ?
                 places.map((place) =>
-                    <Card id = {place.id} name = {place.Name} location = {place.Location} description = {place.Description} Like = {place.Like} Dislike = {place.Dislike}/>
+                    <Card key = {place.id} id = {place.id} name = {place.Name} location = {place.Location} description = {place.Description} Like = {place.Like} Dislike = {place.Dislike}/>
                 ):<h2>{'No locations added Yet😞'}</h2>
             }
         </div>

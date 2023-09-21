@@ -30,32 +30,32 @@ const App = () =>{
     fetchPlaces()
   }, []);
 
-  let element = useRoutes([
-    {
-      path :"/",
-      element:<Home/>
-    },
-    {
-      path : "/add",
-      element : <Add/>
-    },
-    {
-      path : "/see",
-      element : <Read data = {places}/>
-    },
-    {
-      path:"/see/edit/:id",
-      element:<Edit data = {places}/>
-    },
-    {
-      path:"/signup",
-      element:<SignUp/>
-    },
-    {
-      path:"/login",
-      element:<Login data = {credentials}/>
-    }
-  ])
+  // let element = useRoutes([
+  //   {
+  //     path :"/",
+  //     element:<Home/>
+  //   },
+  //   {
+  //     path : "/add",
+  //     element : <Add/>
+  //   },
+  //   {
+  //     path : "/see",
+  //     element : <Read data = {places}/>
+  //   },
+  //   {
+  //     path:"/see/edit/:id",
+  //     element:<Edit data = {places}/>
+  //   },
+  //   {
+  //     path:"/signup",
+  //     element:<SignUp/>
+  //   },
+  //   {
+  //     path:"/login",
+  //     element:<Login data = {credentials}/>
+  //   }
+  // ])
 
 
   useEffect(() => {

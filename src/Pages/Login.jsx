@@ -1,9 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useState } from "react";
+import { supabase } from "../Client";
 
-const Login = (props) =>{
+const Login = () =>{
+    const [credentials, setCredentials] = useState([])
+    
+    useEffect(() => {
+        const fetchCredentials = async() => {
+          const {data} = await supabase
+          .from('LoginCredentials')
+          .select()
+          .order("created_at",{ascending: true})
+    
+          setCredentials(data)
+        }
+    
+        fetchCredentials()
+      }, []);
 
-    const credentials = props.data;
+    
 
     const [providedData, setProvidedData] = useState({username:"",password:""});
     
