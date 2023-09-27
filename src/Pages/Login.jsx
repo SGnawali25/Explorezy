@@ -52,6 +52,7 @@ const Login = () =>{
             } else if (!authentication){
                 alert("You entered the wrong password.");
             } else {
+                alert("login was successful")
                 window.location = "/see";
             }
         }

@@ -28,6 +28,8 @@ const SignUp = () =>{
             })
             .select();
 
+            alert("signup successful")
+
             window.location = "/lgn";
     }
 

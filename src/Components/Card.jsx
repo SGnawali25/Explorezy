@@ -8,6 +8,7 @@ const Card = (props) => {
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
+    const [image, setImage] = useState("");
 
     useEffect(() =>{
         setName(props.name);
@@ -15,6 +16,7 @@ const Card = (props) => {
         setDescription(props.description);
         setLike(props.Like)
         setDislike(props.Dislike)
+        setImage(props.image)
     },[props])
     
     
@@ -61,6 +63,7 @@ const Card = (props) => {
             <h3 className="name">Name of the Place : {name}</h3>
             <h3 className="location">Location : {location}</h3>
             <h3 className="Description">Description : {description}</h3>
+            <h3 className="location">Image : <img src={image} alt="test" /></h3>
             <h2 onClick={updateLike} className="like">👍:{like}</h2>
             <h2 onClick={updateDislike} className="dislike">👎: {dislike}</h2>
         </div>

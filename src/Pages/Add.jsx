@@ -3,7 +3,7 @@ import { supabase } from "../Client";
 
 
 const Add = () => {
-    const [place, setPlace] = useState({Name:"", Location: "", Description:""})
+    const [place, setPlace] = useState({Name:"", Location: "", Description:"", Image: ""})
 
     const handleChange= (event) =>{
         const {name, value} = event.target;
@@ -23,9 +23,12 @@ const Add = () => {
                 Name: place.Name,
                 Location: place.Location,
                 Description : place.Description,
-                City : place.City
+                City : place.City,
+                Image: place.Image
             })
             .select();
+
+            alert("location created successfully")
 
             window.location = "/see";
     }
@@ -54,6 +57,11 @@ const Add = () => {
                 <label htmlFor="description">Description</label>
                 <br />
                 <textarea type = "text" width = "500" height = "500" id="Description" name = "Description" value={place.Description} onChange={handleChange}></textarea>
+                <br />
+
+                <label htmlFor="description">Image</label>
+                <br />
+                <input type = "File" width = "500" height = "500" id="Image" name = "Image" value={place.Image} onChange={handleChange}></input>
                 <br />
 
                 <input className = "submit"  type="submit" value="Submit" onClick={createLocation}/>

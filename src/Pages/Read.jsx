@@ -84,12 +84,14 @@ const Read = () => {
             <button onClick={sortByAlphabetically}>Alphabetically</button>
             
             
+            <div className="all-places">
             {
                 places && places.length > 0 ?
                 places.map((place) =>
-                    <Card key = {place.id} id = {place.id} name = {place.Name} location = {place.Location} description = {place.Description} Like = {place.Like} Dislike = {place.Dislike}/>
+                    <Card key = {place.id} id = {place.id} name = {place.Name} location = {place.Location} description = {place.Description} Like = {place.Like} Dislike = {place.Dislike} image = {place.Image}/>
                 ):<h2>{'No locations added Yet😞'}</h2>
             }
+            </div>
         </div>
     )
 }
